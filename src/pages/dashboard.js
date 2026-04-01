@@ -2,7 +2,7 @@
 // Dashboard Page
 // ============================================
 import { getCurrentUser, getCurrentUserId } from '../services/auth.js';
-import { getAllJobs, getApplicationsByUser, getJobsByEmployer, getApplicationsByJob } from '../services/db.js';
+import { getAllJobs, getApplicationsByUser, getJobsByEmployer, getApplicationsByJob, getUser, updateApplicationStatus } from '../services/db.js';
 import { rankJobsForUser } from '../services/matching.js';
 import { navigate } from '../router.js';
 
@@ -200,15 +200,53 @@ function renderEmployerDashboard(container, user) {
           ${myJobs.map(job => {
             const apps = getApplicationsByJob(job.id);
             return `
-              <div class="card job-card">
-                <div class="job-card-body">
+              <div class="card mb-6 p-md bg-surface">
+                <div class="mb-4">
                   <div class="job-card-title">${job.title}</div>
                   <div class="job-card-company">${job.location} · ${job.salaryRange || 'Salary not specified'}</div>
-                  <div class="job-card-meta">
+                  <div class="job-card-meta mt-2">
                     ${job.isRemote ? '<span class="tag tag-success">Remote</span>' : ''}
                     <span class="tag">${apps.length} application${apps.length !== 1 ? 's' : ''}</span>
                   </div>
                 </div>
+                ${apps.length > 0 ? `
+                  <div class="border-t pt-4 mt-4">
+                    <h4 class="mb-3 text-secondary">Applicants</h4>
+                    <div class="grid" style="gap: var(--space-3)">
+                      ${apps.map(app => {
+                        const candidate = getUser(app.userId);
+                        if (!candidate) return '';
+                        
+                        // Mask if anonymous and not shortlisted yet
+                        const isMasked = app.isAnonymous && app.status === 'applied';
+                        const candidateName = isMasked ? 'Anonymous Candidate' : (candidate.name || candidate.email);
+                        const matchScore = app.matchScore || 0;
+                        
+                        return `
+                          <div class="p-4" style="border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface);">
+                            <div class="flex items-center justify-between mb-2">
+                              <strong>${candidateName}</strong>
+                              <span class="score-badge ${matchScore >= 70 ? 'high' : matchScore >= 40 ? 'medium' : 'low'}" style="width: auto; height: auto; padding: 2px 8px; font-size: 0.75rem;">
+                                Match: ${matchScore}%
+                              </span>
+                            </div>
+                            <div class="mb-3 text-secondary" style="font-size: var(--font-size-sm)">
+                              Education: ${candidate.education || 'N/A'}<br>
+                              Experience: ${candidate.experience || 'N/A'}<br>
+                              Skills: ${(candidate.skills || []).join(', ') || 'None listed'}
+                            </div>
+                            <div class="flex items-center justify-between">
+                              <span class="tag" style="background: var(--color-background)">Status: ${app.status}</span>
+                              ${app.status === 'applied' ? `
+                                <button class="btn btn-primary btn-sm shortlist-btn" data-app-id="${app.id}">Shortlist</button>
+                              ` : ''}
+                            </div>
+                          </div>
+                        `;
+                      }).join('')}
+                    </div>
+                  </div>
+                ` : ''}
               </div>
             `;
           }).join('')}
@@ -223,23 +261,24 @@ function renderEmployerDashboard(container, user) {
       `}
     </div>
   `;
+
+  // Attach event listeners after rendering HTML
+  setTimeout(() => {
+    container.querySelectorAll('.shortlist-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const appId = btn.dataset.appId;
+        updateApplicationStatus(appId, 'shortlisted');
+        renderDashboard(container); // re-render to strip anonymity
+      });
+    });
+  }, 0);
 }
 
 function getEmployerName(employerId) {
-  const { getUser } = require('../services/db.js');
   const emp = getUser(employerId);
   return emp?.companyName || emp?.name || 'Unknown Company';
 }
 
 function formatTag(tag) {
   return tag.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-}
-
-// Fix: use dynamic import workaround for getUser
-function require(path) {
-  // We already import getUser at the top level via db.js — let's use it directly
-  return { getUser: (id) => {
-    const db = JSON.parse(localStorage.getItem('equipath_db') || '{}');
-    return db.users?.[id] || null;
-  }};
 }

@@ -1,0 +1,47 @@
+{
+  "javascript": [
+    { "title": "FreeCodeCamp JavaScript Algorithms", "url": "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/" },
+    { "title": "MDN Web Docs: JavaScript Guide", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" }
+  ],
+  "react": [
+    { "title": "React Official Tutorial", "url": "https://react.dev/learn" },
+    { "title": "FreeCodeCamp Front End Development Libraries", "url": "https://www.freecodecamp.org/learn/front-end-development-libraries/" }
+  ],
+  "html": [
+    { "title": "W3Schools HTML Tutorial", "url": "https://www.w3schools.com/html/" },
+    { "title": "MDN HTML Basics", "url": "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics" }
+  ],
+  "css": [
+    { "title": "W3Schools CSS Tutorial", "url": "https://www.w3schools.com/css/" },
+    { "title": "CSS Tricks: A Complete Guide to Flexbox", "url": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/" }
+  ],
+  "accessibility": [
+    { "title": "W3C Web Accessibility Initiative", "url": "https://www.w3.org/WAI/" },
+    { "title": "A11y Project", "url": "https://www.a11yproject.com/" }
+  ],
+  "wcag": [
+    { "title": "WCAG 2.1 Quick Reference", "url": "https://www.w3.org/WAI/WCAG21/quickref/" }
+  ],
+  "python": [
+    { "title": "Python for Beginners", "url": "https://www.python.org/about/gettingstarted/" },
+    { "title": "FreeCodeCamp Scientific Computing with Python", "url": "https://www.freecodecamp.org/learn/scientific-computing-with-python/" }
+  ],
+  "sql": [
+    { "title": "SQLBolt: Learn SQL with simple interactive exercises", "url": "https://sqlbolt.com/" }
+  ],
+  "statistics": [
+    { "title": "Khan Academy: Statistics and Probability", "url": "https://www.khanacademy.org/math/statistics-probability" }
+  ],
+  "writing": [
+    { "title": "Purdue OWL: General Writing", "url": "https://owl.purdue.edu/owl/general_writing/index.html" }
+  ],
+  "seo": [
+    { "title": "Moz Beginner's Guide to SEO", "url": "https://moz.com/beginners-guide-to-seo" }
+  ],
+  "graphic-design": [
+    { "title": "Canva Design School", "url": "https://www.canva.com/designschool/" }
+  ],
+  "figma": [
+    { "title": "Figma Learn", "url": "https://help.figma.com/hc/en-us" }
+  ]
+}

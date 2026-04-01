@@ -100,6 +100,7 @@ function getAuthLinks(user) {
   return `
     <li role="none"><a href="#/dashboard" role="menuitem">Dashboard</a></li>
     <li role="none"><a href="#/jobs" role="menuitem">Find Jobs</a></li>
+    <li role="none"><a href="#/skill-map" role="menuitem">Skill Planner</a></li>
     <li role="none"><a href="#/assessment" role="menuitem">Assessment</a></li>
     <li role="none"><a href="#/profile" role="menuitem">Profile</a></li>
   `;

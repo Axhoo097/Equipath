@@ -1,6 +1,7 @@
 // ============================================
 // Job Matching Algorithm
 // ============================================
+import { calculateSemanticSimilarity } from './nlp.js';
 
 /**
  * Compute match score between a job seeker and a job.
@@ -18,14 +19,15 @@ export function computeMatchScore(user, job) {
  */
 function computeSkillScore(userSkills, jobSkills) {
   if (!jobSkills.length) return 100;
-  const userSet = new Set(userSkills.map(s => s.toLowerCase().trim()));
-  let matches = 0;
-  for (const skill of jobSkills) {
-    if (userSet.has(skill.toLowerCase().trim())) {
-      matches++;
+  let totalScore = 0;
+  for (const jobSkill of jobSkills) {
+    let bestMatchScore = 0;
+    for (const userSkill of userSkills) {
+      bestMatchScore = Math.max(bestMatchScore, calculateSemanticSimilarity(userSkill, jobSkill));
     }
+    totalScore += bestMatchScore;
   }
-  return Math.round((matches / jobSkills.length) * 100);
+  return Math.round((totalScore / jobSkills.length) * 100);
 }
 
 /**
@@ -79,6 +81,15 @@ export function rankJobsForUser(user, jobs) {
  * Returns array of missing skills
  */
 export function getSkillGaps(userSkills, jobSkills) {
-  const userSet = new Set((userSkills || []).map(s => s.toLowerCase().trim()));
-  return (jobSkills || []).filter(s => !userSet.has(s.toLowerCase().trim()));
+  const missing = [];
+  for (const jobSkill of (jobSkills || [])) {
+    let bestScore = 0;
+    for (const userSkill of (userSkills || [])) {
+      bestScore = Math.max(bestScore, calculateSemanticSimilarity(userSkill, jobSkill));
+    }
+    if (bestScore < 0.8) {
+      missing.push(jobSkill);
+    }
+  }
+  return missing;
 }
