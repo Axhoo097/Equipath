@@ -2,4 +2,6 @@ dist/
 .env
 .DS_Store
 *.log
-test-matching.js
+node_modules/
+build-error.txt
+push_error.txt
