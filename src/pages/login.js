@@ -79,11 +79,14 @@ export function renderLogin(container) {
     if (!password) { showFieldError('login-password', 'Password is required'); valid = false; }
     if (!valid) return;
 
+    const submitBtn = document.getElementById('login-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Signing in…';
     try {
-      const user = signIn(email, password);
+      const user = await signIn(email, password);
       notifyAuthChange();
       renderNavbar();
-      showToast(`Welcome back, ${user.name || 'User'}!`, 'success');
+      showToast(`Welcome back, ${user?.name || 'User'}!`, 'success');
       announce('Successfully signed in');
       navigate('/dashboard');
     } catch (err) {
@@ -91,6 +94,8 @@ export function renderLogin(container) {
       errorEl.textContent = err.message;
       errorEl.classList.remove('hidden');
       announce('Sign in failed: ' + err.message);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Sign In';
     }
   });
 }

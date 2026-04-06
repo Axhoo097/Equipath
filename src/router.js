@@ -65,6 +65,9 @@ function announceRoute(route) {
     '/assessment': 'Ability Assessment',
     '/jobs': 'Job Listings',
     '/post-job': 'Post a Job',
+    '/skill-map': 'Skill Planner',
+    '/interview-sandbox': 'Interview Prep Sandbox',
+    '/analytics': 'Employer Analytics',
   };
   const name = names[route] || 'Page';
   const announcer = document.getElementById('sr-announcer');

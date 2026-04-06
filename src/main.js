@@ -20,6 +20,8 @@ import { renderAssessment } from './pages/assessment.js';
 import { renderJobs } from './pages/jobs.js';
 import { renderPostJob } from './pages/post-job.js';
 import { renderSkillGap } from './pages/skill-gap.js';
+import { renderInterviewSandbox } from './pages/interview-sandbox.js';
+import { renderAnalytics } from './pages/analytics.js';
 
 // --- Initialize App ---
 function initApp() {
@@ -39,6 +41,8 @@ function initApp() {
   registerRoute('/jobs', renderJobs);
   registerRoute('/post-job', renderPostJob);
   registerRoute('/skill-map', renderSkillGap);
+  registerRoute('/interview-sandbox', renderInterviewSandbox);
+  registerRoute('/analytics', renderAnalytics);
 
   // Render navbar & start router
   renderNavbar();

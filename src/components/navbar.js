@@ -16,14 +16,7 @@ export function renderNavbar() {
     <div class="navbar">
       <div class="navbar-inner">
         <a href="#/" class="navbar-brand" aria-label="Equipath Home">
-          <svg width="36" height="36" viewBox="0 0 32 32" aria-hidden="true">
-            <defs><linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#6366f1"/>
-              <stop offset="100%" stop-color="#06b6d4"/>
-            </linearGradient></defs>
-            <circle cx="16" cy="16" r="15" fill="url(#ng)"/>
-            <text x="16" y="21" text-anchor="middle" fill="white" font-family="Inter,sans-serif" font-weight="700" font-size="14">E</text>
-          </svg>
+          <img src="/logo.png" alt="Equipath Logo" width="36" height="36" style="border-radius:8px; display:inline-block; vertical-align:middle; margin-right:8px;" />
           Equipath
         </a>
 
@@ -93,6 +86,7 @@ function getAuthLinks(user) {
   if (user.role === 'employer') {
     return `
       <li role="none"><a href="#/dashboard" role="menuitem">Dashboard</a></li>
+      <li role="none"><a href="#/analytics" role="menuitem">📊 Analytics</a></li>
       <li role="none"><a href="#/post-job" role="menuitem">Post Job</a></li>
       <li role="none"><a href="#/profile" role="menuitem">Company Profile</a></li>
     `;
@@ -100,6 +94,7 @@ function getAuthLinks(user) {
   return `
     <li role="none"><a href="#/dashboard" role="menuitem">Dashboard</a></li>
     <li role="none"><a href="#/jobs" role="menuitem">Find Jobs</a></li>
+    <li role="none"><a href="#/interview-sandbox" role="menuitem">🎙 Interview Prep</a></li>
     <li role="none"><a href="#/skill-map" role="menuitem">Skill Planner</a></li>
     <li role="none"><a href="#/assessment" role="menuitem">Assessment</a></li>
     <li role="none"><a href="#/profile" role="menuitem">Profile</a></li>

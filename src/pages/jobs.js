@@ -2,9 +2,8 @@
 // Jobs Page — Browse & Apply (Sprint 4)
 // ============================================
 import { getCurrentUser, getCurrentUserId } from '../services/auth.js';
-import { getAllJobs, createApplication, getApplicationsByUser, getUser } from '../services/db.js';
+import { getAllJobsSync, createApplicationSync, getApplicationsByUserSync, getUserSync } from '../services/db.js';
 import { rankJobsForUser, getSkillGaps } from '../services/matching.js';
-import { computeEmployerScore } from '../services/readiness.js';
 import { navigate } from '../router.js';
 import { announce } from '../utils/accessibility.js';
 import { showToast } from '../utils/helpers.js';
@@ -14,9 +13,9 @@ export function renderJobs(container) {
   if (!user) { navigate('/login'); return; }
   if (user.role === 'employer') { navigate('/dashboard'); return; }
 
-  const allJobs = getAllJobs();
+  const allJobs = getAllJobsSync();
   const ranked = rankJobsForUser(user, allJobs);
-  const applications = getApplicationsByUser(getCurrentUserId());
+  const applications = getApplicationsByUserSync(getCurrentUserId());
   const appliedJobIds = new Set(applications.map(a => a.jobId));
 
   let filterRemote = false;
@@ -67,18 +66,14 @@ export function renderJobs(container) {
               ${filtered.map(({ job, matchScore, skillScore, abilityScore }) => {
                 const applied = appliedJobIds.has(job.id);
                 const gaps = getSkillGaps(user.skills, job.requiredSkills);
-                const emp = getUser(job.employerId);
+                const emp = getUserSync(job.employerId);
                 const empName = emp?.companyName || emp?.name || 'Unknown Company';
-                const empScore = computeEmployerScore(emp);
                 return `
                   <div class="card job-card" id="job-${job.id}">
                     <div class="job-card-body">
                       <div class="job-card-title">${job.title}</div>
                       <div class="job-card-company flex items-center gap-2" style="font-size: var(--font-size-sm);">
                         <strong>${empName}</strong> · ${job.location}
-                        <span class="badge ${empScore >= 80 ? 'bg-success' : 'bg-warning'} text-white" style="padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;" title="Employer Accessibility Score">
-                          🛡️ ${empScore}% Accessible
-                        </span>
                       </div>
                       <p class="text-secondary mb-3" style="font-size:var(--font-size-sm);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">
                         ${job.description}
@@ -100,15 +95,7 @@ export function renderJobs(container) {
                       <div class="mt-4">
                         ${applied
                           ? '<button class="btn btn-ghost btn-sm" disabled>✓ Applied</button>'
-                          : `
-                            <div style="margin-bottom: 0.5rem;">
-                              <label class="form-check" style="font-size: var(--font-size-sm);">
-                                <input type="checkbox" id="anon-${job.id}" />
-                                <span>Apply Anonymously (Hide name & demographic cues)</span>
-                              </label>
-                            </div>
-                            <button class="btn btn-primary btn-sm apply-btn" data-job-id="${job.id}">Apply Now</button>
-                          `
+                          : `<button class="btn btn-primary btn-sm apply-btn" data-job-id="${job.id}">Apply Now</button>`
                         }
                       </div>
                     </div>
@@ -151,12 +138,10 @@ export function renderJobs(container) {
     container.querySelectorAll('.apply-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const jobId = btn.dataset.jobId;
-        const isAnon = document.getElementById(`anon-${jobId}`)?.checked || false;
-        createApplication({
+        createApplicationSync({
           jobId,
           userId: getCurrentUserId(),
           matchScore: ranked.find(r => r.job.id === jobId)?.matchScore || 0,
-          isAnonymous: isAnon,
         });
         appliedJobIds.add(jobId);
         showToast('Application submitted successfully!', 'success');

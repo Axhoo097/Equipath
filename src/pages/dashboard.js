@@ -2,7 +2,7 @@
 // Dashboard Page
 // ============================================
 import { getCurrentUser, getCurrentUserId } from '../services/auth.js';
-import { getAllJobs, getApplicationsByUser, getJobsByEmployer, getApplicationsByJob, getUser, updateApplicationStatus } from '../services/db.js';
+import { getAllJobsSync, getApplicationsByUserSync, getJobsByEmployerSync, getApplicationsByJobSync, getUserSync, updateApplicationStatusSync } from '../services/db.js';
 import { rankJobsForUser } from '../services/matching.js';
 import { navigate } from '../router.js';
 
@@ -19,10 +19,10 @@ export function renderDashboard(container) {
 
 function renderSeekerDashboard(container, user) {
   const userId = getCurrentUserId();
-  const allJobs = getAllJobs();
+  const allJobs = getAllJobsSync();
   const ranked = rankJobsForUser(user, allJobs);
   const topMatches = ranked.slice(0, 3);
-  const applications = getApplicationsByUser(userId);
+  const applications = getApplicationsByUserSync(userId);
   const hasAssessment = !!user.abilityProfile;
 
   container.innerHTML = `
@@ -92,7 +92,10 @@ function renderSeekerDashboard(container, user) {
       <!-- Top Matches -->
       <div class="flex items-center justify-between mb-4">
         <h2>Top Job Matches</h2>
-        <a href="#/jobs" class="btn btn-ghost btn-sm">View All →</a>
+        <div style="display:flex;gap:var(--space-2)">
+          <a href="#/interview-sandbox" class="btn btn-ghost btn-sm">🎙 Interview Prep</a>
+          <a href="#/jobs" class="btn btn-ghost btn-sm">View All →</a>
+        </div>
       </div>
 
       ${topMatches.length > 0 ? `
@@ -155,9 +158,9 @@ function renderSeekerDashboard(container, user) {
 
 function renderEmployerDashboard(container, user) {
   const userId = getCurrentUserId();
-  const myJobs = getJobsByEmployer(userId);
+  const myJobs = getJobsByEmployerSync(userId);
   let totalApps = 0;
-  myJobs.forEach(j => { totalApps += getApplicationsByJob(j.id).length; });
+  myJobs.forEach(j => { totalApps += getApplicationsByJobSync(j.id).length; });
 
   container.innerHTML = `
     <div class="container page">
@@ -184,21 +187,24 @@ function renderEmployerDashboard(container, user) {
         <div class="card stat-card">
           <div class="stat-icon amber" aria-hidden="true">⭐</div>
           <div>
-            <div class="stat-value">${user.employerReadinessScore || '—'}</div>
-            <div class="stat-label">Readiness Score</div>
+            <div class="stat-value">N/A</div>
+            <div class="stat-label">Pending Reviews</div>
           </div>
         </div>
       </div>
 
       <div class="flex items-center justify-between mb-4">
         <h2>Your Job Listings</h2>
-        <a href="#/post-job" class="btn btn-primary btn-sm">+ Post New Job</a>
+        <div style="display:flex;gap:var(--space-2)">
+          <a href="#/analytics" class="btn btn-secondary btn-sm">📊 Analytics</a>
+          <a href="#/post-job" class="btn btn-primary btn-sm">+ Post New Job</a>
+        </div>
       </div>
 
       ${myJobs.length > 0 ? `
         <div class="grid" style="gap:var(--space-4)">
           ${myJobs.map(job => {
-            const apps = getApplicationsByJob(job.id);
+            const apps = getApplicationsByJobSync(job.id);
             return `
               <div class="card mb-6 p-md bg-surface">
                 <div class="mb-4">
@@ -214,12 +220,10 @@ function renderEmployerDashboard(container, user) {
                     <h4 class="mb-3 text-secondary">Applicants</h4>
                     <div class="grid" style="gap: var(--space-3)">
                       ${apps.map(app => {
-                        const candidate = getUser(app.userId);
+                        const candidate = getUserSync(app.userId);
                         if (!candidate) return '';
                         
-                        // Mask if anonymous and not shortlisted yet
-                        const isMasked = app.isAnonymous && app.status === 'applied';
-                        const candidateName = isMasked ? 'Anonymous Candidate' : (candidate.name || candidate.email);
+                        const candidateName = candidate.name || candidate.email;
                         const matchScore = app.matchScore || 0;
                         
                         return `
@@ -267,7 +271,7 @@ function renderEmployerDashboard(container, user) {
     container.querySelectorAll('.shortlist-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const appId = btn.dataset.appId;
-        updateApplicationStatus(appId, 'shortlisted');
+        updateApplicationStatusSync(appId, 'shortlisted');
         renderDashboard(container); // re-render to strip anonymity
       });
     });
@@ -275,7 +279,7 @@ function renderEmployerDashboard(container, user) {
 }
 
 function getEmployerName(employerId) {
-  const emp = getUser(employerId);
+  const emp = getUserSync(employerId);
   return emp?.companyName || emp?.name || 'Unknown Company';
 }
 

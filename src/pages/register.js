@@ -131,7 +131,7 @@ export function renderRegister(container) {
   document.getElementById('role-seeker-label').style.borderColor = 'var(--color-primary)';
 
   // Form submit
-  document.getElementById('register-form').addEventListener('submit', (e) => {
+  document.getElementById('register-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     clearErrors();
 
@@ -160,8 +160,11 @@ export function renderRegister(container) {
       extraData.employerReadinessScore = 0;
     }
 
+    const submitBtn = document.getElementById('reg-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Creating account…';
     try {
-      signUp(email, password, role, extraData);
+      await signUp(email, password, role, extraData);
       notifyAuthChange();
       renderNavbar();
       showToast('Account created successfully!', 'success');
@@ -172,6 +175,8 @@ export function renderRegister(container) {
       errorEl.textContent = err.message;
       errorEl.classList.remove('hidden');
       announce('Registration failed: ' + err.message);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Create Account';
     }
   });
 }
