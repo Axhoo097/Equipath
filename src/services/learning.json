@@ -1,47 +1,151 @@
 {
   "javascript": [
-    { "title": "FreeCodeCamp JavaScript Algorithms", "url": "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/" },
-    { "title": "MDN Web Docs: JavaScript Guide", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" }
+    { "title": "FreeCodeCamp: JavaScript Algorithms & Data Structures", "url": "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/", "type": "free", "duration": "~300 hrs" },
+    { "title": "MDN Web Docs: JavaScript Guide", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide", "type": "free", "duration": "Self-paced" },
+    { "title": "Eloquent JavaScript (Book)", "url": "https://eloquentjavascript.net/", "type": "free", "duration": "~20 hrs" }
   ],
   "react": [
-    { "title": "React Official Tutorial", "url": "https://react.dev/learn" },
-    { "title": "FreeCodeCamp Front End Development Libraries", "url": "https://www.freecodecamp.org/learn/front-end-development-libraries/" }
+    { "title": "React Official Tutorial", "url": "https://react.dev/learn", "type": "free", "duration": "~10 hrs" },
+    { "title": "FreeCodeCamp: Front End Dev Libraries", "url": "https://www.freecodecamp.org/learn/front-end-development-libraries/", "type": "free", "duration": "~300 hrs" },
+    { "title": "Scrimba: Learn React", "url": "https://scrimba.com/learn/learnreact", "type": "free", "duration": "~11 hrs" }
   ],
   "html": [
-    { "title": "W3Schools HTML Tutorial", "url": "https://www.w3schools.com/html/" },
-    { "title": "MDN HTML Basics", "url": "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics" }
+    { "title": "W3Schools HTML Tutorial", "url": "https://www.w3schools.com/html/", "type": "free", "duration": "~5 hrs" },
+    { "title": "MDN HTML Basics", "url": "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics", "type": "free", "duration": "~3 hrs" }
   ],
   "css": [
-    { "title": "W3Schools CSS Tutorial", "url": "https://www.w3schools.com/css/" },
-    { "title": "CSS Tricks: A Complete Guide to Flexbox", "url": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/" }
+    { "title": "W3Schools CSS Tutorial", "url": "https://www.w3schools.com/css/", "type": "free", "duration": "~5 hrs" },
+    { "title": "CSS Tricks: A Complete Guide to Flexbox", "url": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/", "type": "free", "duration": "~2 hrs" },
+    { "title": "Kevin Powell: CSS on YouTube", "url": "https://www.youtube.com/@KevinPowell", "type": "free", "duration": "Self-paced" }
   ],
   "accessibility": [
-    { "title": "W3C Web Accessibility Initiative", "url": "https://www.w3.org/WAI/" },
-    { "title": "A11y Project", "url": "https://www.a11yproject.com/" }
+    { "title": "W3C Web Accessibility Initiative", "url": "https://www.w3.org/WAI/", "type": "free", "duration": "Self-paced" },
+    { "title": "A11y Project", "url": "https://www.a11yproject.com/", "type": "free", "duration": "Self-paced" },
+    { "title": "Deque University: Web Accessibility Fundamentals", "url": "https://dequeuniversity.com/curriculum/courses/web-accessibility", "type": "paid", "duration": "~8 hrs" }
   ],
   "wcag": [
-    { "title": "WCAG 2.1 Quick Reference", "url": "https://www.w3.org/WAI/WCAG21/quickref/" }
+    { "title": "WCAG 2.1 Quick Reference", "url": "https://www.w3.org/WAI/WCAG21/quickref/", "type": "free", "duration": "Self-paced" },
+    { "title": "WCAG 2 Overview", "url": "https://www.w3.org/WAI/standards-guidelines/wcag/", "type": "free", "duration": "~2 hrs" }
+  ],
+  "screen-readers": [
+    { "title": "Using NVDA with Firefox", "url": "https://webaim.org/articles/nvda/firefox", "type": "free", "duration": "~1 hr" },
+    { "title": "Screen Reader Basics: NVDA", "url": "https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts", "type": "free", "duration": "~1 hr" }
   ],
   "python": [
-    { "title": "Python for Beginners", "url": "https://www.python.org/about/gettingstarted/" },
-    { "title": "FreeCodeCamp Scientific Computing with Python", "url": "https://www.freecodecamp.org/learn/scientific-computing-with-python/" }
+    { "title": "Python for Beginners (Python.org)", "url": "https://www.python.org/about/gettingstarted/", "type": "free", "duration": "Self-paced" },
+    { "title": "FreeCodeCamp: Scientific Computing with Python", "url": "https://www.freecodecamp.org/learn/scientific-computing-with-python/", "type": "free", "duration": "~300 hrs" },
+    { "title": "Automate the Boring Stuff with Python", "url": "https://automatetheboringstuff.com/", "type": "free", "duration": "~20 hrs" }
   ],
   "sql": [
-    { "title": "SQLBolt: Learn SQL with simple interactive exercises", "url": "https://sqlbolt.com/" }
+    { "title": "SQLBolt: Interactive SQL Exercises", "url": "https://sqlbolt.com/", "type": "free", "duration": "~5 hrs" },
+    { "title": "Mode Analytics SQL Tutorial", "url": "https://mode.com/sql-tutorial/", "type": "free", "duration": "~6 hrs" }
   ],
   "statistics": [
-    { "title": "Khan Academy: Statistics and Probability", "url": "https://www.khanacademy.org/math/statistics-probability" }
+    { "title": "Khan Academy: Statistics & Probability", "url": "https://www.khanacademy.org/math/statistics-probability", "type": "free", "duration": "~20 hrs" },
+    { "title": "StatQuest with Josh Starmer", "url": "https://www.youtube.com/@statquest", "type": "free", "duration": "Self-paced" }
+  ],
+  "tableau": [
+    { "title": "Tableau Public: Free Training Videos", "url": "https://www.tableau.com/learn/training", "type": "free", "duration": "~6 hrs" },
+    { "title": "Coursera: Data Visualization with Tableau", "url": "https://www.coursera.org/specializations/data-visualization", "type": "paid", "duration": "~4 months" }
+  ],
+  "excel": [
+    { "title": "ExcelJet: Excel Formulas & Functions", "url": "https://exceljet.net/", "type": "free", "duration": "Self-paced" },
+    { "title": "Microsoft Excel Training (Microsoft)", "url": "https://support.microsoft.com/en-us/office/excel-video-training-9bc05390-e94c-46af-a5b3-d7c22f6990bb", "type": "free", "duration": "~5 hrs" }
   ],
   "writing": [
-    { "title": "Purdue OWL: General Writing", "url": "https://owl.purdue.edu/owl/general_writing/index.html" }
+    { "title": "Purdue OWL: General Writing", "url": "https://owl.purdue.edu/owl/general_writing/index.html", "type": "free", "duration": "Self-paced" },
+    { "title": "Coursera: Writing in the Sciences (Stanford)", "url": "https://www.coursera.org/learn/sciwrite", "type": "free", "duration": "~28 hrs" }
+  ],
+  "editing": [
+    { "title": "Grammar Girl Quick & Dirty Tips", "url": "https://www.quickanddirtytips.com/grammar-girl/", "type": "free", "duration": "Self-paced" }
   ],
   "seo": [
-    { "title": "Moz Beginner's Guide to SEO", "url": "https://moz.com/beginners-guide-to-seo" }
+    { "title": "Moz Beginner's Guide to SEO", "url": "https://moz.com/beginners-guide-to-seo", "type": "free", "duration": "~4 hrs" },
+    { "title": "Google SEO Starter Guide", "url": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide", "type": "free", "duration": "~2 hrs" }
+  ],
+  "content-strategy": [
+    { "title": "HubSpot Academy: Content Marketing", "url": "https://academy.hubspot.com/courses/content-marketing", "type": "free", "duration": "~6 hrs" }
+  ],
+  "communication": [
+    { "title": "Coursera: Improving Communication Skills (Upenn)", "url": "https://www.coursera.org/learn/wharton-communication-skills", "type": "free", "duration": "~10 hrs" }
+  ],
+  "public-speaking": [
+    { "title": "Toastmasters: Public Speaking Resources", "url": "https://www.toastmasters.org/Resources", "type": "free", "duration": "Self-paced" },
+    { "title": "TED Masterclass: The Art of Public Speaking", "url": "https://masterclass.com/ted", "type": "paid", "duration": "~5 hrs" }
+  ],
+  "project-management": [
+    { "title": "Google Project Management Certificate (Coursera)", "url": "https://www.coursera.org/professional-certificates/google-project-management", "type": "paid", "duration": "~6 months" },
+    { "title": "PMI: PMBOK Guide (Free Online)", "url": "https://www.pmi.org/pmbok-guide-standards/foundational/pmbok", "type": "free", "duration": "Self-paced" }
+  ],
+  "social-media": [
+    { "title": "HubSpot: Social Media Marketing Course", "url": "https://academy.hubspot.com/courses/social-media", "type": "free", "duration": "~4 hrs" }
+  ],
+  "advocacy": [
+    { "title": "Coursera: Disability Awareness & Support", "url": "https://www.coursera.org/search?query=disability+advocacy", "type": "free", "duration": "Varies" }
   ],
   "graphic-design": [
-    { "title": "Canva Design School", "url": "https://www.canva.com/designschool/" }
+    { "title": "Canva Design School", "url": "https://www.canva.com/designschool/", "type": "free", "duration": "Self-paced" },
+    { "title": "Google UX Design Certificate (Coursera)", "url": "https://www.coursera.org/professional-certificates/google-ux-design", "type": "paid", "duration": "~6 months" }
+  ],
+  "adobe-photoshop": [
+    { "title": "Adobe Photoshop: Official Tutorials", "url": "https://helpx.adobe.com/photoshop/tutorials.html", "type": "free", "duration": "Self-paced" }
+  ],
+  "adobe-illustrator": [
+    { "title": "Adobe Illustrator: Official Tutorials", "url": "https://helpx.adobe.com/illustrator/tutorials.html", "type": "free", "duration": "Self-paced" }
   ],
   "figma": [
-    { "title": "Figma Learn", "url": "https://help.figma.com/hc/en-us" }
+    { "title": "Figma Learn", "url": "https://help.figma.com/hc/en-us", "type": "free", "duration": "Self-paced" },
+    { "title": "Figma: Design with Figma (YouTube)", "url": "https://www.youtube.com/c/Figma", "type": "free", "duration": "Self-paced" }
+  ],
+  "typography": [
+    { "title": "Canva: Typography 101", "url": "https://www.canva.com/learn/font-design/", "type": "free", "duration": "~1 hr" }
+  ],
+  "qa-testing": [
+    { "title": "ISTQB Foundation: Software Testing", "url": "https://www.istqb.org/", "type": "free", "duration": "Self-paced" },
+    { "title": "Udemy: The Complete 2024 Software Testing Bootcamp", "url": "https://www.udemy.com/course/testerbootcamp/", "type": "paid", "duration": "~28 hrs" }
+  ],
+  "automation": [
+    { "title": "Selenium Documentation", "url": "https://www.selenium.dev/documentation/", "type": "free", "duration": "Self-paced" },
+    { "title": "Playwright Documentation", "url": "https://playwright.dev/docs/intro", "type": "free", "duration": "Self-paced" }
+  ],
+  "manual-testing": [
+    { "title": "Software Testing Help: Manual Testing Guide", "url": "https://www.softwaretestinghelp.com/manual-testing-tutorial/", "type": "free", "duration": "~5 hrs" }
+  ],
+  "data-analysis": [
+    { "title": "Google Data Analytics Certificate (Coursera)", "url": "https://www.coursera.org/professional-certificates/google-data-analytics", "type": "paid", "duration": "~6 months" },
+    { "title": "Kaggle: Data Analysis Practice", "url": "https://www.kaggle.com/learn", "type": "free", "duration": "Self-paced" }
+  ],
+  "machine-learning": [
+    { "title": "Coursera: Machine Learning Specialization (Andrew Ng)", "url": "https://www.coursera.org/specializations/machine-learning-introduction", "type": "paid", "duration": "~3 months" },
+    { "title": "Fast.ai: Practical Deep Learning", "url": "https://www.fast.ai/", "type": "free", "duration": "~15 hrs" }
+  ],
+  "git": [
+    { "title": "Pro Git Book (Free)", "url": "https://git-scm.com/book/en/v2", "type": "free", "duration": "~10 hrs" },
+    { "title": "GitHub Skills: Interactive Courses", "url": "https://skills.github.com/", "type": "free", "duration": "~2 hrs" }
+  ],
+  "agile": [
+    { "title": "Atlassian: Agile Coach", "url": "https://www.atlassian.com/agile", "type": "free", "duration": "Self-paced" }
+  ],
+  "scrum": [
+    { "title": "Scrum.org: Scrum Guide", "url": "https://www.scrum.org/resources/scrum-guide", "type": "free", "duration": "~1 hr" }
+  ],
+  "docker": [
+    { "title": "Docker Official Docs: Get Started", "url": "https://docs.docker.com/get-started/", "type": "free", "duration": "~5 hrs" }
+  ],
+  "kubernetes": [
+    { "title": "Kubernetes: Interactive Tutorial", "url": "https://kubernetes.io/docs/tutorials/", "type": "free", "duration": "Self-paced" }
+  ],
+  "aws": [
+    { "title": "AWS Training & Certification (Free Tier)", "url": "https://aws.amazon.com/training/", "type": "free", "duration": "Self-paced" }
+  ],
+  "typescript": [
+    { "title": "TypeScript Official Handbook", "url": "https://www.typescriptlang.org/docs/handbook/intro.html", "type": "free", "duration": "~10 hrs" }
+  ],
+  "nodejs": [
+    { "title": "Node.js Official Guides", "url": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs", "type": "free", "duration": "Self-paced" }
+  ],
+  "ux": [
+    { "title": "Google UX Design Certificate (Coursera)", "url": "https://www.coursera.org/professional-certificates/google-ux-design", "type": "paid", "duration": "~6 months" },
+    { "title": "Nielsen Norman Group: UX Training", "url": "https://www.nngroup.com/training/", "type": "paid", "duration": "Varies" }
   ]
 }
