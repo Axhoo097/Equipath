@@ -59,7 +59,7 @@ export function renderPostJob(container) {
           <div class="grid grid-2">
             <div class="form-group">
               <label class="form-label" for="job-location">Location</label>
-              <input type="text" id="job-location" class="form-input" placeholder="City, State or 'Remote'" value="\${user.location || ''}" />
+              <input type="text" id="job-location" class="form-input" placeholder="City, State or 'Remote'" value="${user.location || ''}" />
             </div>
             <div class="form-group">
               <label class="form-label" for="job-salary">Salary Range</label>
@@ -78,7 +78,7 @@ export function renderPostJob(container) {
           <p class="text-secondary mb-4">What accessibility features does this role provide?</p>
 
           <div class="grid grid-2 mb-6">
-            \${[
+            ${[
               ['screen-reader-friendly', '🖥️ Screen Reader Friendly'],
               ['no-physical-requirements', '♿ No Physical Requirements'],
               ['wheelchair-accessible', '🏢 Wheelchair Accessible Office'],
@@ -89,8 +89,8 @@ export function renderPostJob(container) {
               ['elevator-access', '🛗 Elevator Access'],
             ].map(([val, label]) => `
               <label class="form-check">
-                <input type="checkbox" name="a11y-tags" value="\${val}" />
-                <span>\${label}</span>
+                <input type="checkbox" name="a11y-tags" value="${val}" />
+                <span>${label}</span>
               </label>
             `).join('')}
           </div>
@@ -101,20 +101,20 @@ export function renderPostJob(container) {
           </p>
           
           <div class="grid grid-2">
-            \${[
+            ${[
               ['phys-mobility', '🦿 Mobility', 'How much physical mobility is needed?'],
               ['phys-vision', '👁️ Vision', 'How much visual ability is needed?'],
               ['phys-hearing', '👂 Hearing', 'How much hearing ability is needed?'],
               ['phys-cognition', '🧠 Cognition', 'How much cognitive demand is required?'],
             ].map(([id, label, hint]) => `
               <div class="form-group">
-                <label class="form-label" for="\${id}">\${label}</label>
+                <label class="form-label" for="${id}">${label}</label>
                 <div class="flex items-center gap-3">
                   <span style="font-size:var(--font-size-xs);color:var(--color-text-muted);white-space:nowrap">High demand</span>
-                  <input type="range" id="\${id}" min="10" max="100" value="75" class="w-full" style="accent-color:var(--color-primary);height:8px" aria-describedby="\${id}-hint" />
+                  <input type="range" id="${id}" min="10" max="100" value="75" class="w-full" style="accent-color:var(--color-primary);height:8px" aria-describedby="${id}-hint" />
                   <span style="font-size:var(--font-size-xs);color:var(--color-text-muted);white-space:nowrap">Low demand</span>
                 </div>
-                <span class="form-hint" id="\${id}-hint">\${hint}</span>
+                <span class="form-hint" id="${id}-hint">${hint}</span>
               </div>
             `).join('')}
           </div>
